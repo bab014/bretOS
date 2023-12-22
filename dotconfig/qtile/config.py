@@ -17,6 +17,7 @@ bar_icons = {
 mod = "mod4"
 # assumes the kitty binary is in the .local/bin dir
 terminal = f"/home/{os.getlogin()}/.local/bin/kitty"
+power_menu = f"/home/{os.getlogin()}/.config/rofi/powermenu/type-2/powermenu.sh"
 # make sure we have one of the browsers installed
 # browser = "flatpak run org.mozilla.firefox"
 # defaults to running brave
@@ -67,6 +68,7 @@ keys = [
     ),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "b", lazy.spawn(browser), desc=f"Launch {browser_name}"),
+    Key([mod], "p", lazy.spawn(power_menu), desc=f"Launch power menu"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),

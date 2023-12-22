@@ -2,6 +2,8 @@
 
 ### First Things First
 
+> This assumes you are installing on a Debian based distro
+
 ```bash
 xdg-user-dirs-update
 ```

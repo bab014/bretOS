@@ -28,7 +28,7 @@ cd $SRC_DIR
 python3 -m venv qtile_venv
 
 # get the qtile repo
-cd qtile_venv
+cd $SRC_DIR/qtile_venv
 git clone https://github.com/qtile/qtile.git
 
 # pip install qtile

@@ -9,6 +9,11 @@ from libqtile.utils import guess_terminal
 ubuntu = " "
 debian = " "
 
+bar_icons = {
+    "browser": {"icon": " ", "foreground": "#88C0D0", "name": "browser"},
+    "terminal": {"icon": " ", "foreground": "#ECEFF4", "name": "terminal"},
+}
+
 mod = "mod4"
 # assumes the kitty binary is in the .local/bin dir
 terminal = f"/home/{os.getlogin()}/.local/bin/kitty"
@@ -96,7 +101,7 @@ for vt in range(1, 8):
     )
 
 
-groups = [Group(i) for i in "123456789"]
+groups = [Group(i) for i in "12345"]
 
 for i in groups:
     keys.extend(
@@ -124,7 +129,7 @@ for i in groups:
 
 layouts = [
     layout.MonadTall(
-        margin=12, border_focus="#81A1C1", border_normal="#4C566A", border_width=2
+        margin=16, border_focus="#81A1C1", border_normal="#4C566A", border_width=2
     ),
     layout.Columns(border_focus_stack=["#81A1C1", "#5E81AC"], border_width=2),
     layout.Max(),
@@ -167,10 +172,30 @@ screens = [
         bottom=bar.Bar(
             [
                 distro_widget,
-                widget.CurrentLayout(),
-                widget.GroupBox(),
+                widget.Sep(foreground="#4C566A"),
+                widget.GroupBox(
+                    foreground="#D8DEE9",
+                    highlight_method="line",
+                    highlight_color=["4C566A"],
+                    this_current_screen_border="81A1C1",
+                    this_other_screen_border="D8DEE9",
+                    other_current_screen_border="D8DEE9",
+                ),
+                widget.TextBox(
+                    bar_icons["browser"]["icon"],
+                    name=bar_icons["browser"]["name"],
+                    fontsize=24,
+                    foreground=bar_icons["browser"]["foreground"],
+                ),
+                widget.TextBox(
+                    bar_icons["terminal"]["icon"],
+                    name=bar_icons["terminal"]["name"],
+                    fontsize=24,
+                    foreground=bar_icons["terminal"]["foreground"],
+                ),
                 widget.Prompt(),
                 widget.WindowName(),
+                widget.CurrentLayout(),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),

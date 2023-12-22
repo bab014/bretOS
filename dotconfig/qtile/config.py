@@ -13,8 +13,11 @@ mod = "mod4"
 # assumes the kitty binary is in the .local/bin dir
 terminal = f"/home/{os.getlogin()}/.local/bin/kitty"
 # make sure we have one of the browsers installed
-browser = "firefox"
-# browser = "brave-browser"
+# browser = "flatpak run org.mozilla.firefox"
+# defaults to running brave
+browser = "flatpak run com.brave.Browser"
+browser_name = "brave"
+# browser_name = "firefox"
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -58,7 +61,7 @@ keys = [
         desc="Toggle between split and unsplit sides of stack",
     ),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    Key([mod], "b", lazy.spawn(browser), desc="Launch terminal"),
+    Key([mod], "b", lazy.spawn(browser), desc=f"Launch {browser_name}"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
@@ -120,7 +123,10 @@ for i in groups:
     )
 
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
+    layout.MonadTall(
+        margin=12, border_focus="#81A1C1", border_normal="#4C566A", border_width=2
+    ),
+    layout.Columns(border_focus_stack=["#81A1C1", "#5E81AC"], border_width=2),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -142,10 +148,25 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+import distro
+
+d = distro.id()
+if d == "ubuntu":
+    distro_widget = widget.TextBox(
+        ubuntu, fontsize="24", foreground="#D08770", name="ubuntu"
+    )
+else:
+    distro_widget = widget.TextBox(
+        debian, fontsize="24", foreground="#BF616A", name="debian"
+    )
+
 screens = [
     Screen(
+        wallpaper="~/.wallpapers/main.png",
+        wallpaper_mode="stretch",
         bottom=bar.Bar(
             [
+                distro_widget,
                 widget.CurrentLayout(),
                 widget.GroupBox(),
                 widget.Prompt(),
@@ -156,15 +177,13 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
                 widget.Systray(),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 widget.QuickExit(),
             ],
-            24,
+            30,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),

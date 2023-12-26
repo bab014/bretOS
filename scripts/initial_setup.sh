@@ -5,7 +5,10 @@
 
 REPO_DIR="$HOME/repos"
 WORK_DIR="$HOME/repos/bretOS"
-WALLPAPER="nord_blob"
+WALLPAPER="ubuntu_aurora"
+
+# create xdg-user-dirs
+xdg-user-dirs-update
 
 # create the repository dir
 mkdir $REPO_DIR

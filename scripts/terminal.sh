@@ -11,6 +11,7 @@ curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 mkdir -p "$HOME"/.config/kitty
 cp "$WORK_DIR"/kitty/* "$HOME"/.config/kitty/
 
+mkdir "$HOME"/.local/bin
 cd "$HOME"/.local/bin
 ln -s "$HOME"/.local/kitty.app/bin/kitty kitty
 

@@ -26,7 +26,8 @@ flatpak install flathub com.brave.Browser
 # setting up wallpapers
 # default is to use the nord_blob wallpaper
 mkdir -p $HOME/.wallpapers
-ln -s "$WORK_DIR/wallpapers/$WALLPAPER.png" "$HOME/.wallpapers/main.png"
+# was having issues linking it, need to copy file
+cp "$WORK_DIR/wallpapers/$WALLPAPER.png" "$HOME/.wallpapers/main.png"
 
 # copy over bashrc file
 cp $WORK_DIR/dotconfig/.bashrc $HOME/

@@ -29,6 +29,8 @@ git clone https://github.com/qtile/qtile.git
 
 # pip install qtile
 bin/pip install qtile/.
+# need to actually install this
+bin/pip install distro
 
 # symlink qtile binary to .local/bin
 ln -s $QTILE_BIN "$LOCAL_BIN_DIR"/qtile

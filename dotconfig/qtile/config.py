@@ -209,7 +209,7 @@ screens = [
                 # widget.StatusNotifier(),
                 widget.Systray(),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
+                widget.QuickExit(default_text=" ⏻ ", fontsize=24),
             ],
             30,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders

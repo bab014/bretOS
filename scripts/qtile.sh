@@ -9,12 +9,8 @@ REPO_DIR="$HOME/repos/bretOS/dotconfig/"
 # dependencies
 sudo apt install xorg xserver-xorg python3 python3-pip python3-venv python3-v-sim python-dbus-dev libpangocairo-1.0-0 python3-xcffib python3-cairocffi libxkbcommon-dev libxkbcommon-x11-dev -yy
 
-# checking for src folder
-if [! -d $SRC_DIR ]
-then
-  echo "$SRC_DIR not found. Creating"
-  mkdir -p $SRC_DIR
-fi
+# creating src folder
+mkdir -p $SRC_DIR
 
 # checking for .local/bin folder
 if [! -d $LOCAL_BIN_DIR ]

@@ -172,7 +172,7 @@ screens = [
     Screen(
         wallpaper="~/.wallpapers/main.png",
         wallpaper_mode="stretch",
-        bottom=bar.Bar(
+        top=bar.Bar(
             [
                 distro_widget,
                 widget.Sep(foreground="#4C566A"),

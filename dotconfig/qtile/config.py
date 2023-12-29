@@ -23,7 +23,7 @@ power_menu = f"/home/{os.getlogin()}/.config/rofi/powermenu/type-2/powermenu.sh"
 # make sure we have one of the browsers installed
 # browser = "flatpak run org.mozilla.firefox"
 # defaults to running brave
-browser = "flatpak run com.brave.Browser"
+browser = "brave-browser"
 browser_name = "brave"
 # browser_name = "firefox"
 

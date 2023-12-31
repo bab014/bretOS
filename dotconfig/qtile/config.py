@@ -1,3 +1,13 @@
+#   ____  _   _ _         _____             __ _
+#  / __ \| | (_) |       / ____|           / _(_)
+# | |  | | |_ _| | ___  | |     ___  _ __ | |_ _  __ _
+# | |  | | __| | |/ _ \ | |    / _ \| '_ \|  _| |/ _` |
+# | |__| | |_| | |  __/ | |___| (_) | | | | | | | (_| |
+#  \___\_\\__|_|_|\___|  \_____\___/|_| |_|_| |_|\__, |
+#                                                 __/ |
+#                                                |___/
+# Bret Beatty
+
 import os
 import subprocess
 
@@ -105,7 +115,7 @@ for vt in range(1, 8):
     )
 
 
-groups = [Group(i) for i in "12345"]
+groups = [Group(i, layout="monadtall") for i in "12345"]
 
 for i in groups:
     keys.extend(
@@ -130,6 +140,10 @@ for i in groups:
             #     desc="move focused window to group {}".format(i.name)),
         ]
     )
+
+# -------------------------------------------------------
+# Scratchpads
+# -------------------------------------------------------
 
 layouts = [
     layout.MonadTall(
@@ -198,7 +212,9 @@ screens = [
                     foreground=bar_icons["terminal"]["foreground"],
                 ),
                 widget.Prompt(),
+                widget.Spacer(),
                 widget.WindowName(),
+                widget.Spacer(),
                 widget.CurrentLayout(),
                 widget.Chord(
                     chords_colors={
@@ -209,7 +225,7 @@ screens = [
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
                 widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                widget.Clock(format="%-I:%M %p"),
                 widget.QuickExit(default_text=" ⏻ ", fontsize=24),
             ],
             30,

@@ -18,7 +18,7 @@ mkdir -p $BIN_DIR
 
 # installing flatpak and other things
 sudo apt update
-sudo apt install flatpak curl wget htop neofetch unzip python3-venv python3-pip file xsel feh sxiv
+sudo apt install flatpak curl wget htop neofetch unzip python3-venv python3-pip file xsel feh sxiv fzf
 
 # setup the flathub repo
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo

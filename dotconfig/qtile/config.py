@@ -20,6 +20,7 @@ from libqtile.lazy import lazy
 
 ubuntu = " "
 debian = " "
+rasbian = " "
 
 bar_icons = {
     "browser": {"icon": " ", "foreground": "#88C0D0", "name": "browser"},
@@ -171,17 +172,21 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-import distro
+# import distro
+#
+# d = distro.id()
+# if d == "ubuntu":
+#     distro_widget = widget.TextBox(
+#         ubuntu, fontsize="24", foreground="#D08770", name="ubuntu"
+#     )
+# else:
+#     distro_widget = widget.TextBox(
+#         debian, fontsize="24", foreground="#BF616A", name="debian"
+#     )
 
-d = distro.id()
-if d == "ubuntu":
-    distro_widget = widget.TextBox(
-        ubuntu, fontsize="24", foreground="#D08770", name="ubuntu"
-    )
-else:
-    distro_widget = widget.TextBox(
-        debian, fontsize="24", foreground="#BF616A", name="debian"
-    )
+distro_widget = widget.TextBox(
+    rasbian, fontsize="24", foreground="#BF616A", name="raspbian"
+)
 
 screens = [
     Screen(

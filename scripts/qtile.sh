@@ -52,6 +52,7 @@ echo '
 bin/pip install qtile/.
 # need to actually install this
 bin/pip install distro
+bin/pip install dbus-next
 
 # symlink qtile binary to .local/bin
 ln -s $QTILE_BIN "$LOCAL_BIN_DIR"/qtile
